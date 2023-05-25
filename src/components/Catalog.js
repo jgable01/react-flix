@@ -8,13 +8,15 @@ import Box from "@mui/material/Box";
 import { Snackbar } from "@mui/material";
 import axios from "axios";
 import New from "./New";
-import { set } from "react-hook-form";
+import { get, set } from "react-hook-form";
 
 function Catalog() {
   const navigate = useNavigate();
   const [openState, setOpenState] = useState(false);
   const [moviesList, setMovies] = useState([]);
   const url = "https://api.andrespecht.dev/movies";
+
+  let sorted = false;
 
   const options = {
     method: "GET",
@@ -23,14 +25,12 @@ function Catalog() {
 
   async function getMovies() {
     try {
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error(`${response.statusText} (${response.status})`);
+      const response = await axios.get(url);
+      let data = response.data.response;
+      if (response.status !== 200) {
+        throw new Error(`${data.statusText} (${data.status})`);
       }
-      // Parsing the reponse as JSON
-      const data = await response.json();
-      // Printing the movies
-      return data.response;
+      return data;
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,7 @@ function Catalog() {
 
   useEffect(() => {
     displayMovies();
-  }, []);
+  }, [moviesList]);
 
   function handleClick(e) {
     moviesList.forEach((movie) => {
@@ -56,6 +56,23 @@ function Catalog() {
     setOpenState(false);
   }
 
+  //Function to sort items alphabetically
+  function sortItems() {
+    let sortedMovies = moviesList.sort((a, b) => {
+      let movieA = a.title.toUpperCase();
+      let movieB = b.title.toUpperCase();
+      if (movieA < movieB) {
+        return -1;
+      }
+      if (movieA > movieB) {
+        return 1;
+      }
+      return 0;
+    });
+    setMovies([...sortedMovies]);
+    sorted = true;
+  }
+
   async function displayMovies() {
     let movies = await getMovies();
     movies = Object.values(movies);
@@ -67,7 +84,9 @@ function Catalog() {
 
   return (
     <div>
-      {openState ? <New openState={openState} handleClose={handleClose} /> : null}
+      {openState ? (
+        <New openState={openState} handleClose={handleClose} />
+      ) : null}
       <Container>
         <Box
           sx={{
@@ -82,6 +101,7 @@ function Catalog() {
             sx={{
               mr: 2,
             }}
+            onClick={sortItems}
           >
             Sort
           </Button>
@@ -96,7 +116,7 @@ function Catalog() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {moviesList.map((movie) => (
-            <Grid item xs={2} sm={4} key={movie.id}>
+            <Grid item xs={2} sm={4} key={moviesList.indexOf(movie)}>
               <img
                 src={movie.poster}
                 alt={movie.title}
@@ -107,8 +127,6 @@ function Catalog() {
                   borderRadius: "5px",
                 }}
                 className="movie-poster"
-                genre={movie.genre}
-                runningTime={movie.runningTime}
                 onClick={handleClick}
               />
               <h3 onClick={handleClick} className="movie-title">

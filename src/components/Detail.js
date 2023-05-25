@@ -13,7 +13,6 @@ function Detail() {
   movieName = movieName.replace(/'/g, "");
   let [movieDetails, setMovieDetails] = useState([]);
   const url = `https://api.andrespecht.dev/movie/${movieName}`;
-  console.log(movieName);
 
   const options = {
     method: "GET",
