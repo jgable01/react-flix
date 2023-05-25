@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-flix/static/css/main.522f201b.css",
-    "main.js": "/react-flix/static/js/main.adf3382c.js",
+    "main.js": "/react-flix/static/js/main.58b49bcb.js",
     "static/media/jurassic-park.jpg": "/react-flix/static/media/jurassic-park.27b87a751ec67920178e.jpg",
     "index.html": "/react-flix/index.html",
     "main.522f201b.css.map": "/react-flix/static/css/main.522f201b.css.map",
-    "main.adf3382c.js.map": "/react-flix/static/js/main.adf3382c.js.map"
+    "main.58b49bcb.js.map": "/react-flix/static/js/main.58b49bcb.js.map"
   },
   "entrypoints": [
     "static/css/main.522f201b.css",
-    "static/js/main.adf3382c.js"
+    "static/js/main.58b49bcb.js"
   ]
 }
