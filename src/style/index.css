@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.movie-poster {
+  transition: all 0.3s ease-in-out;
+}
+
+.movie-poster:hover {
+  transform: scale(1.02);
+}
+
+.movie-title {
+  cursor: pointer;
+}
+
+.detail-img {
+  width: 25%;
+  height: 25%;
+  min-width: 340px;
+  min-height: 455px;
+}
