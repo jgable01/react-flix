@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/github-finder/static/css/main.7ec0ab3c.css",
-    "main.js": "/github-finder/static/js/main.53513fad.js",
+    "main.css": "/github-finder/static/css/main.522f201b.css",
+    "main.js": "/github-finder/static/js/main.19342508.js",
     "static/media/jurassic-park.jpg": "/github-finder/static/media/jurassic-park.27b87a751ec67920178e.jpg",
     "index.html": "/github-finder/index.html",
-    "main.7ec0ab3c.css.map": "/github-finder/static/css/main.7ec0ab3c.css.map",
-    "main.53513fad.js.map": "/github-finder/static/js/main.53513fad.js.map"
+    "main.522f201b.css.map": "/github-finder/static/css/main.522f201b.css.map",
+    "main.19342508.js.map": "/github-finder/static/js/main.19342508.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ec0ab3c.css",
-    "static/js/main.53513fad.js"
+    "static/css/main.522f201b.css",
+    "static/js/main.19342508.js"
   ]
 }
